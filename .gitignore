@@ -1,0 +1,15 @@
+# Django ignore set
+*.pyc
+*.pyo
+__pycache__/
+*.sqlite3
+*.pyc
+*.swp
+*.swo
+*.log
+*.bak
+*.db
+*.sqlite
+media/
+static/
+*.pyc
