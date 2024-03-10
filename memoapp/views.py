@@ -16,9 +16,25 @@ from rest_framework import generics
 from drf_yasg.utils import swagger_auto_schema
 from .serializers import MemoSerializer
 
-
-class MemoDetail(DetailView):
+class MemoDetail(generics.RetrieveUpdateDestroyAPIView, DetailView):
     template_name = "memoapp/detail.html"
+    model = MemoModel
+    queryset = MemoModel.objects.all()
+    serializer_class = MemoSerializer
+
+    @swagger_auto_schema(
+        operation_description="Get a memo by ID",
+        responses={
+            200: MemoSerializer,
+            404: "Memo not found",
+        },
+    )
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+
+class MemoList(ListView):
+    template_name = "memoapp/list.html"
     model = MemoModel
 
 
