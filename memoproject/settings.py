@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "memoapp",
     "drf_yasg",
     "rest_framework",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,14 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+]
+
+CORS_ORIGIN_ALLOW_ALL = True  # 安全でないので本番環境では適切な設定を行ってください
+
+# React開発サーバーのオリジンを許可する
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Reactアプリケーションが実行されているポート
 ]
 
 ROOT_URLCONF = "memoproject.urls"

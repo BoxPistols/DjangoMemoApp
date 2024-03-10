@@ -16,10 +16,6 @@ from rest_framework import generics
 from drf_yasg.utils import swagger_auto_schema
 from .serializers import MemoSerializer
 
-
-# class MemoDetail(DetailView):
-
-
 class MemoDetail(generics.RetrieveUpdateDestroyAPIView, DetailView):
     template_name = "memoapp/detail.html"
     model = MemoModel
@@ -35,6 +31,11 @@ class MemoDetail(generics.RetrieveUpdateDestroyAPIView, DetailView):
     )
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
+
+
+class MemoList(ListView):
+    template_name = "memoapp/list.html"
+    model = MemoModel
 
 
 class MemoList(ListView):
