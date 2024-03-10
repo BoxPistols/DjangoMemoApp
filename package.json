@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "lint": "pylint **/*.py",
+    "lint:fix": "black **/*.py"
+  }
+}
