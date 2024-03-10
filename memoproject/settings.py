@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "memoapp",
+    "drf_yasg",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
