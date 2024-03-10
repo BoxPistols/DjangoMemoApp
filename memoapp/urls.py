@@ -11,7 +11,6 @@ from .views import (
     logoutfunc,
 )
 
-
 urlpatterns = [
     path("list/", MemoList.as_view(), name="list"),
     path("detail/<int:pk>/", MemoDetail.as_view(), name="detail"),
