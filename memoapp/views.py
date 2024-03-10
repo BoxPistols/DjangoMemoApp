@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import MemoModel
 from django.views.generic import (
     ListView,
     DetailView,
@@ -6,10 +7,10 @@ from django.views.generic import (
     DeleteView,
     UpdateView,
 )
-from .models import MemoModel
 from django.urls import reverse_lazy
-from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import User  # これは、
+from django.db import InternalError
+from django.contrib.auth import authenticate, login, logout
 
 
 class MemoList(ListView):
@@ -42,15 +43,15 @@ class MemoUpdate(UpdateView):
     success_url = reverse_lazy("list")
 
 
-def signupfunc(request):
-    if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
+def signupfunc(request):  # 新規登録
+    if request.method == "POST":  # ユーザー名とパスワードを受け取り、ユーザーを作成
+        username = request.POST["username"]  # ユーザー名
+        password = request.POST["password"]  # パスワード
         user = User.objects.create_user(username, "", password)
         try:
-            user.save()
-            return render(request, "signup.html", {"context": "登録完了"})
-        except:
+            user = User.objects.create_user(username, "", password)
+            return redirect("login")
+        except InternalError:
             return render(request, "signup.html", {"context": "登録できませんでした"})
     return render(request, "signup.html", {"context": "新規登録"})
 
@@ -69,3 +70,8 @@ def loginfunc(request):
             )
     else:
         return render(request, "login.html")
+
+
+def logoutfunc(request):
+    logout(request)
+    return redirect("login")
