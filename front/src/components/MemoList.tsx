@@ -56,33 +56,36 @@ const MemoList: React.FC = () => {
   return (
     <div>
       <h2>Memo List</h2>
+      
       <ul>
-        {memos.map((memo) => (
+        {/* TODO: */}
+        {/* FIXME: */}
+        {/* {memos.map((memo) => (
           <li key={memo.id}>
             <h3>{memo.title}</h3>
             <p>{memo.memo}</p>
             <button onClick={() => setSelectedMemo(memo)}>Edit</button>
             <button onClick={() => handleDeleteMemo(memo.id)}>Delete</button>
           </li>
-        ))}
+        ))}  */}
       </ul>
 
-      <h2>Create Memo</h2>
-      <form onSubmit={handleCreateMemo}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Memo"
-          value={memo}
-          onChange={(e) => setMemo(e.target.value)}
-        ></textarea>
-        <button type="submit">Create</button>
-      </form>
-
+       <h2>Create Memo</h2>
+       <form onSubmit={handleCreateMemo}>
+         <input
+           type="text"
+           placeholder="Title"
+           value={title}
+           onChange={(e) => setTitle(e.target.value)}
+         />
+         <textarea
+           placeholder="Memo"
+           value={memo}
+           onChange={(e) => setMemo(e.target.value)}
+         ></textarea>
+         <button type="submit">Create</button>
+       </form>
+      
       {selectedMemo && (
         <div>
           <h2>Update Memo</h2>
