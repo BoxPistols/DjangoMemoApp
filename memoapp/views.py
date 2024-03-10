@@ -6,26 +6,26 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 
 class MemoList(ListView):
-    template_name = 'list.html'
+    template_name = 'memoapp/list.html'
     model = MemoModel
 
 class MemoDetail(DetailView):
-    template_name = 'detail.html'
+    template_name = 'memoapp/detail.html'
     model = MemoModel
 
 class MemoCreate(CreateView):
-    template_name = 'create.html'
+    template_name = 'memoapp/create.html'
     model = MemoModel
     fields = ('title', 'memo')
     success_url = reverse_lazy('list')
 
 class MemoDelete(DeleteView):
-    template_name = 'delete.html'
+    template_name = 'memoapp/delete.html'
     model = MemoModel
     success_url = reverse_lazy('list')
 
 class MemoUpdate(UpdateView):
-    template_name = 'update.html'
+    template_name = 'memoapp/update.html'
     model = MemoModel
     fields = ('title', 'memo')
     success_url = reverse_lazy('list')

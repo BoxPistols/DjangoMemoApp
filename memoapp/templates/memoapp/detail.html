@@ -1,0 +1,6 @@
+<h1>メモ詳細</h1>
+<p>タイトル: {{ object.title }}</p>
+<p>内容: {{ object.memo }}</p>
+<a href="{% url 'update' object.pk %}">編集</a>
+<a href="{% url 'delete' object.pk %}">削除</a>
+<a href="{% url 'list' %}">一覧に戻る</a>
